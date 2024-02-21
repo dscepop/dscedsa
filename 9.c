@@ -13,7 +13,6 @@ NODE create() {
   temp = (NODE) malloc(sizeof(struct BST));
   printf("\nEnter The value: ");
   scanf("%d", & temp -> data);
-
   temp -> lchild = NULL;
   temp -> rchild = NULL;
   return temp;
@@ -24,7 +23,7 @@ void preorder(NODE root);
 void postorder(NODE root);
 void search(NODE root);
 void insert(NODE root, NODE newnode) {
-  /*Note: if newnode->data ==  root->data it will be skipped. No duplicate nodes are allowed */
+  /*Note: if newnode->data == root->data it will be skipped. No duplicate nodes are allowed */
   if (newnode -> data < root -> data) {
     if (root -> lchild == NULL)
       root -> lchild = newnode;
@@ -115,7 +114,6 @@ void main() {
         printf("\nThe Postorder display : ");
         postorder(root);
       }
-
       break;
     case 3:
       search(root);

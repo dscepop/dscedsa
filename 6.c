@@ -66,7 +66,6 @@ void delete() {
       front = (front + 1) % MAX;
   }
 }
-
 void display() {
   int i;
   if (front == -1) {

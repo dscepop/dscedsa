@@ -11,17 +11,16 @@ struct node {
 typedef struct node * NODE;
 NODE start = NULL;
 int count = 0;
-
 NODE create() {
   NODE snode;
   snode = (NODE) malloc(sizeof(struct node));
-
   if (snode == NULL) {
     printf("\nMemory is not available");
     exit(1);
   }
   printf("\nEnter the usn,Name,Branch, sem,PhoneNo of the student:");
-  scanf("%s %s %s %d %ld", snode -> usn, snode -> name, snode -> branch, & snode -> sem, & snode -> phone);
+  scanf("%s %s %s %d %ld", snode -> usn, snode -> name, snode -> branch, & snode -> sem, &
+    snode -> phone);
   snode -> link = NULL;
   count++;
   return snode;
@@ -57,7 +56,6 @@ NODE deletefront() {
 NODE insertend() {
   NODE cur, temp;
   temp = create();
-
   if (start == NULL) {
     return temp;
   }
@@ -74,7 +72,6 @@ NODE deleteend() {
     printf("\nLinked List is empty");
     return NULL;
   }
-
   if (start -> link == NULL) {
     printf("\nThe student node with the usn:%s is deleted", start -> usn);
     free(start);
@@ -147,7 +144,7 @@ int main() {
     scanf("%d", & ch);
     switch (ch) {
     case 1:
-      printf("\nEnter the no of students:    ");
+      printf("\nEnter the no of students: ");
       scanf("%d", & n);
       for (i = 1; i <= n; i++)
         start = insertfront();

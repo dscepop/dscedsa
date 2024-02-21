@@ -1,7 +1,10 @@
-#include<stdio.h>
+#include <stdio.h>
+
+#include <string.h>
 
 char str[50], pat[20], rep[20], ans[50];
-int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
+int c = 0, m = 0, i = 0, j = 0, flag = 0;
+
 void stringmatch() {
   while (str[c] != '\0') {
     if (str[m] == pat[i]) {
@@ -9,7 +12,7 @@ void stringmatch() {
       m++;
       if (pat[i] == '\0') {
         flag = 1;
-        for (k = 0; rep[k] != '\0'; k++, j++) {
+        for (int k = 0; rep[k] != '\0'; k++, j++) {
           ans[j] = rep[k];
         }
         i = 0;
@@ -25,16 +28,25 @@ void stringmatch() {
   }
   ans[j] = '\0';
 }
-void main() {
+
+int main() {
   printf("\nEnter the main string:");
-  gets(str);
+  fgets(str, sizeof(str), stdin);
   printf("\nEnter the pat string:");
-  gets(pat);
+  fgets(pat, sizeof(pat), stdin);
   printf("\nEnter the replace string:");
-  gets(rep);
+  fgets(rep, sizeof(rep), stdin);
+
+  // Removing newline characters from input strings
+  str[strcspn(str, "\n")] = '\0';
+  pat[strcspn(pat, "\n")] = '\0';
+  rep[strcspn(rep, "\n")] = '\0';
+
   stringmatch();
   if (flag == 1)
     printf("\nResultant string is %s", ans);
   else
     printf("\nPattern string is not found");
+
+  return 0;
 }

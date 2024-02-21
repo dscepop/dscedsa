@@ -93,11 +93,9 @@ node * insert(node * T, int x) {
 }
 node * Delete(node * T, int x) {
   node * p;
-
   if (T == NULL) {
     return NULL;
   } else
-
   if (x > T -> data) // Insert in Right Subtree
   {
     T -> right = Delete(T -> right, x);
@@ -120,7 +118,6 @@ node * Delete(node * T, int x) {
       p = T -> right;
       while (p -> left != NULL)
         p = p -> left;
-
       T -> data = p -> data;
       T -> right = Delete(T -> right, p -> data);
       if (BF(T) == 2) // Rebalance during windup
@@ -130,7 +127,6 @@ node * Delete(node * T, int x) {
           T = LR(T);
     } else
       return (T -> left);
-
   }
   T -> ht = height(T);
   return (T);
@@ -151,7 +147,6 @@ int height(node * T) {
     return (lh);
   return (rh);
 }
-
 node * rotateright(node * x) {
   node * y;
   y = x -> left;
@@ -161,7 +156,6 @@ node * rotateright(node * x) {
   y -> ht = height(y);
   return (y);
 }
-
 node * rotateleft(node * x) {
   node * y;
   y = x -> right;
@@ -171,29 +165,24 @@ node * rotateleft(node * x) {
   y -> ht = height(y);
   return (y);
 }
-
 node * RR(node * T) {
   T = rotateleft(T);
   return (T);
 }
-
 node * LL(node * T) {
   T = rotateright(T);
   return (T);
 }
-
 node * LR(node * T) {
   T -> left = rotateleft(T -> left);
   T = rotateright(T);
   return (T);
 }
-
 node * RL(node * T) {
   T -> right = rotateright(T -> right);
   T = rotateleft(T);
   return (T);
 }
-
 int BF(node * T) {
   int lh, rh;
   if (T == NULL)
@@ -208,7 +197,6 @@ int BF(node * T) {
     rh = 1 + T -> right -> ht;
   return (lh - rh);
 }
-
 void preorder(node * T) {
   if (T != NULL) {
     printf(" %d(Bf=%d)", T -> data, BF(T));
@@ -216,7 +204,6 @@ void preorder(node * T) {
     preorder(T -> right);
   }
 }
-
 void inorder(node * T) {
   if (T != NULL) {
     inorder(T -> left);

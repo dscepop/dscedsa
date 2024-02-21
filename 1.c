@@ -50,7 +50,6 @@ void create() {
     scanf("%d", & a[i]);
   }
 }
-
 void display() {
   int i;
   if (n == 0) {
@@ -63,20 +62,16 @@ void display() {
 }
 void insert() {
   int i;
-
   if (n == MAX) {
     printf("\nArray is full. Insertion is not possible");
     return;
   }
-
   do {
-    printf("\nEnter a valid position where element to be inserted:	");
+    printf("\nEnter a valid position where element to be inserted: ");
     scanf("%d", & pos);
   } while (pos > n);
-
-  printf("\nEnter the value to be inserted:   ");
+  printf("\nEnter the value to be inserted: ");
   scanf("%d", & elem);
-
   for (i = n - 1; i >= pos; i--) {
     a[i + 1] = a[i];
   }
@@ -91,14 +86,11 @@ void delete() {
     printf("\nArray is empty and no elements to delete");
     return;
   }
-
   do {
-    printf("\nEnter a valid position from where element to be deleted:	");
+    printf("\nEnter a valid position from where element to be deleted: ");
     scanf("%d", & pos);
   } while (pos >= n);
-
   elem = a[pos];
-
   printf("\nDeleted element is : %d \n", elem);
   for (i = pos; i < n - 1; i++) {
     a[i] = a[i + 1];
