@@ -1,15 +1,14 @@
 #include <stdio.h>
-
-#include<stdlib.h>
-
-#include<stdio_ext.h>
+#include <stdlib.h>
 
 #define MAX 3
 char cq[MAX];
 int front = -1, rear = -1;
+
 void insert(char);
-void delete();
+void delete_item();
 void display();
+
 void main() {
   int ch;
   char item;
@@ -20,27 +19,30 @@ void main() {
     printf("\n==> 3. Display");
     printf("\n==> 4. Exit");
     printf("\nEnter Your Choice: ");
-    scanf("%d", & ch);
-    __fpurge(stdin);
+    scanf("%d", &ch);
+    fflush(stdin); // For Turbo C++
+
     switch (ch) {
-    case 1:
-      printf("\n\nEnter the element to be inserted: ");
-      scanf("%c", & item);
-      insert(item);
-      break;
-    case 2:
-      delete();
-      break;
-    case 3:
-      display();
-      break;
-    case 4:
-      exit(0);
-    default:
-      printf("\n\nPlease enter a valid choice");
+      case 1:
+        printf("\n\nEnter the element to be inserted: ");
+        fflush(stdin); // For Turbo C++
+        scanf("%c", &item);
+        insert(item);
+        break;
+      case 2:
+        delete_item();
+        break;
+      case 3:
+        display();
+        break;
+      case 4:
+        exit(0);
+      default:
+        printf("\n\nPlease enter a valid choice");
     }
   }
 }
+
 void insert(char item) {
   if (front == (rear + 1) % MAX) {
     printf("\n\n~~Circular Queue Overflow~~");
@@ -52,7 +54,8 @@ void insert(char item) {
     cq[rear] = item;
   }
 }
-void delete() {
+
+void delete_item() {
   char item;
   if (front == -1) {
     printf("\n\n~~Circular Queue Underflow~~");
@@ -66,6 +69,7 @@ void delete() {
       front = (front + 1) % MAX;
   }
 }
+
 void display() {
   int i;
   if (front == -1) {
